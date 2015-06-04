@@ -1,6 +1,6 @@
 { "name": "tiny-error"
 , "version": "0.0.0-work-in-progress"
-, "description": "Make super-light error objects."
+, "description": "Super-light error objects."
 
 , "dependencies":
   {}

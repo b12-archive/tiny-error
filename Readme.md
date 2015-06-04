@@ -20,7 +20,7 @@
 tiny-error
 ==========
 
-**Make super-light error objects.**
+**Super-light error objects.**
 
 This library is inspired by error handling in *go*. I’m no expert with *go*, but I’ve heard two things:
 
