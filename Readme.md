@@ -126,8 +126,10 @@ API
 ===
 
 
-**`tinyError(message)`**  
-**`  → {Error}`**
+<h3><pre>
+tinyError(message)
+  → {Error}
+</pre></h3>
 
 A shortcut to `tinyError({message: message})`.
 
@@ -135,13 +137,19 @@ A shortcut to `tinyError({message: message})`.
 
 * `{String} message`
 
+
 ***
 
-**`tinyError(args)`**  
-**`  → {Function} tinyErrorCurried`**  
 
-**`tinyError(args)`**  
-**`  → {Error}`**
+<h3><pre>
+tinyError(args)
+  → {Function} tinyErrorCurried
+</pre></h3>
+
+<h3><pre>
+tinyError(args)
+  → {Error}
+</pre></h3>
 
 An error maker.
 
