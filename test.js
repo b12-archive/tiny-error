@@ -131,5 +131,17 @@ test('Creates a lightweight error object', (is) => {
 });
 
 test('Fails gracefully', (is) => {
+  is.throws(
+    () => tinyError(),
+    /expected `{Object} args` or `{String} message`/i,
+    'throws an error when called without arguments'
+  );
+
+  is.throws(
+    () => tinyError(true),
+    /expected `{Object} args` or `{String} message`/i,
+    'throws an error when called with an argument of a wrong type'
+  );
+
   is.end();
 });
