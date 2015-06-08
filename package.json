@@ -3,7 +3,8 @@
 , "description": "Super-light error objects."
 
 , "dependencies":
-  {}
+  { "object-assign": "^3.0.0"
+  }
 
 , "scripts":
   { "build": "cd module && babel --out-dir ../ *.js"
@@ -26,7 +27,6 @@
   , "nodangel": "1.3.8"
   , "tap-spec": "2.2.2"
 
-  , "object-assign": "3.0.0"
   , "tape-catch": "1.0.4"
   }
 
