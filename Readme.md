@@ -20,7 +20,8 @@
 tiny-error
 ==========
 
-**Super-light error objects.** Inspired by *go*.
+**Super-light error objects.**  
+Inspired by *go*.
 
  
 
