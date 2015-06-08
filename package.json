@@ -1,5 +1,5 @@
 { "name": "tiny-error"
-, "version": "0.0.0-work-in-progress"
+, "version": "0.1.0"
 , "description": "Super-light error objects."
 
 , "dependencies":
