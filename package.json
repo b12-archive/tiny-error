@@ -3,7 +3,7 @@
 , "description": "Super-light error objects."
 
 , "dependencies":
-  { "1-liners": "^0.2.10"
+  { "101": "^1.0.0"
   , "object-assign": "^3.0.0"
   }
 

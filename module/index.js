@@ -1,5 +1,5 @@
 const assign = require('object-assign');
-const drop = require('1-liners/drop');
+const omit = require('101/omit');
 
 let error;
 
@@ -17,12 +17,12 @@ const tinyError = (args) => {
 
   if (hasMessage && args.hasOwnProperty('prefix')) {
     args.message = args.prefix + args.message;
-    args = drop('prefix', args);
+    args = omit(args, 'prefix');
   }
 
   if (hasMessage && args.hasOwnProperty('suffix')) {
     args.message = args.message + args.suffix;
-    args = drop('suffix', args);
+    args = omit(args, 'suffix');
   }
 
   return (hasMessage ?
