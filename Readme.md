@@ -45,63 +45,75 @@ $ npm install tiny-error
 
 
 
-Usage
------
+Demo
+----
+
+Native:
 
 ```js
-const tinyError = require('tiny-error');
-
 throw new Error('Something went wrong.');
 //» Error: Something went wrong.
-//»     at repl:…:…
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
-//»     at …
+//»     at repl:1:7
+//»     at REPLServer.self.eval (repl.js:110:21)
+//»     at repl.js:249:20
+//»     at REPLServer.self.eval (repl.js:122:7)
+//»     at Interface.<anonymous> (repl.js:239:12)
+//»     at Interface.emit (events.js:95:17)
+//»     at Interface._onLine (readline.js:203:10)
+//»     at Interface._line (readline.js:532:8)
+//»     at Interface._ttyWrite (readline.js:761:14)
+//»     at ReadStream.onkeypress (readline.js:100:10)
+```
 
+
+Tiny:
+
+```js
 throw tinyError('Something went wrong.');
 //» Error: Something went wrong.
 ```
 
+Prefer to stay *tiny*? Then read on.
 
-*tiny-error* is a [maker function*](#maker-function). It creates an object based on `Error.prototype`, but doesn’t invoke the `Error` constructor directly – thus saving us from creating a stack trace.
 
-The function [curries][] passed options until it receives the option `message` or a string.
 
-[curries]:  http://en.wikipedia.org/wiki/Currying
 
-So these are equivalent:
+Usage
+-----
+
+*tiny-error* is a [maker function*](#maker-function). It creates a new object based on `Error.prototype`, but doesn’t invoke the `Error` constructor directly – thus saving us from creating a stack trace.
+
+It’s a simple idea – so usage is simple:
 
 ```js
-let error = tinyError({
-  label: 'my library',
-  myCustomCode: 707,
-  message: 'something went wrong',
-});
+const tinyError = require('tiny-error');
 
-let identicalError = tinyError({
-  label: 'my library',
-  myCustomCode: 707,
-})({
-  message: 'something went wrong',
-});
+tinyError('Oops!');
+//» { [Error: Oops!] message: 'Oops!' }
 
-let identicalErrorAgain = tinyError({
-  myCustomCode: 707,
-})({
-  label: 'my library',
-})({
-  'something went wrong'
+tinyError({message: 'Oops!', myErrorCode: 7});
+//» { [Error: Oops!] message: 'Oops!', myErrorCode: 7 }
+
+throw tinyError('Oops!');
+//» Error: Oops!            (Output depends on how your engine presents errors.)
+```
+
+
+There is still power behind this simplicity. Just enough to keep it easy to use but still flexible:
+
+```js
+throw tinyError({
+  prefix: '[my library] ',
+  message: 'Curses! Try once more.',
 });
+//» Error: [my library] Curses! Try once more.
+
+const myError = tinyError({prefix: '[my library] '});
+throw myError('Curses! Try once more.');
+//» Error: [my library] Curses! Try once more.
+
+throw myError('Oh no. Not again!');
+//» Error: [my library] Oh no. Not again!
 ```
 
 ***
@@ -110,7 +122,71 @@ let identicalErrorAgain = tinyError({
 &ast;&emsp;*maker function* – a term I coined together for a function that creates an object. Not an instance of a specific class (that’s a *constructor*), not an instance of any class (*factory*). Just an object. If there is another word for that, great! Tell me in [an issue](https://github.com/studio-b12/tiny-error/issues/new) please.
 
 
-*Work in progress…*
+
+
+API
+===
+
+
+**`tinyError(message)`**  
+**`  → {Error}`**
+
+A shortcut to `tinyError({message: message})`.
+
+**Parameters:**
+
+* `{String} message`
+
+***
+
+**`tinyError(args)`**  
+**`  → {Function} tinyErrorCurried`**  
+
+**`tinyError(args)`**  
+**`  → {Error}`**
+
+An error maker.
+
+We return an `{Error}` if `args` contains a `{String} args.message`. Otherwise we return a [curried][] function. So these are equivalent:
+
+```js
+tinyError({
+  prefix: '[my library] ',
+  myCode: 0,
+  message: 'Something went wrong',
+});
+
+
+const myError = tinyError({prefix: '[my library] '})
+myError({
+  myCode: 0,
+  message: 'Something went wrong',
+});
+
+
+const knownError = myError({myCode: 0});
+knownError('Something went wrong');
+```
+
+
+All `args` are just copied to the target object – except three special-cased:
+
+
+**Parameters:**
+
+* `{Function} args.prefix`  
+  we’ll prepend it to the `message`
+
+* `{Function} args.suffix`  
+  we’ll append it to the `message`
+
+* `{Function} args.prototype`  
+  will be used as prototype instead of `Error.prototype`
+
+
+Keep in mind that some properties like `message` and `name` will be treated specially by `Error.prototype`.
+
+[curried]:  http://en.wikipedia.org/wiki/Currying
 
 
 
