@@ -62,15 +62,20 @@ throw new Error('Something went wrong.');
 //»     at …
 //»     at …
 //»     at …
+//»     at …
+//»     at …
+//»     at …
+//»     at …
+//»     at …
 
 throw tinyError('Something went wrong.');
 //» Error: Something went wrong.
 ```
 
 
-A *tiny-error* is created with a maker function[*][maker-function]. It creates an object with `Error.prototype` as its prototype, but doesn’t invoke the `Error` constructor directly – thus saving us from creating a stack trace.
+*tiny-error* is a maker function[*](#maker-function). It creates an object based on `Error.prototype`, but doesn’t invoke the `Error` constructor directly – thus saving us from creating a stack trace.
 
-The function [curries][] passed options until it receives a `message` option or a string.
+The function [curries][] passed options until it receives the option `message` or a string.
 
 [curries]:  http://en.wikipedia.org/wiki/Currying
 
@@ -98,6 +103,10 @@ let identicalErrorAgain = tinyError({
   'something went wrong'
 });
 ```
+
+
+<a                                                      id="maker-function"></a>
+&ast;&emsp;*maker function* – a term I coined together for a function that creates an object. Not an instance of a specific class (that’s a *constructor*), not an instance of any class (*factory*). Just an object. If there is another word for that, great! Tell me in [an issue](https://github.com/studio-b12/tiny-error/issues/new) please.
 
 
 *Work in progress…*
