@@ -23,7 +23,12 @@ tiny-error
 **Super-light error objects.**  
 Inspired by *go*.
 
- 
+<p align="center"><img
+  alt="lightweight"
+  src="http://31.media.tumblr.com/33115207e1f5dfb893e90dcc8918ff3d/tumblr_mvwg4fFm7W1qcung4o1_1280.gif"
+  width="400"
+  height="300"
+/></p>
 
 I’m no expert with *go*, but I have heard two things:
 
