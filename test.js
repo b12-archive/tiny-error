@@ -58,15 +58,6 @@ test('Creates a lightweight error object', (is) => {
     'Returns an object based on `Error.prototype`,'
   );
 
-  is.equal(
-    tinyError({
-      type: TypeError,
-      message: 'message',
-    }).__proto__,
-    TypeError.prototype,
-    '…except when `type` is specified,'
-  );
-
   const customProto = {};
   is.equal(
     tinyError({
@@ -74,17 +65,14 @@ test('Creates a lightweight error object', (is) => {
       message: 'message',
     }).__proto__,
     customProto,
-    '…or a custom `prototype` is given.'
+    '…except when a custom `prototype` is given.'
   );
 
-  is.equal(
-    tinyError({
-      type: TypeError,
-      prototype: customProto,
-      message: 'message',
-    }).__proto__,
-    customProto,
-    '`prototype` takes precedence over `type`.'
+  is.notOk(
+    tinyError({prototype: customProto, message: ''})
+      .hasOwnProperty('prototype')
+    ,
+    'Doesn’t copy the property `prototype`.'
   );
 
   is.equal(
@@ -114,15 +102,17 @@ test('Creates a lightweight error object', (is) => {
 
   is.deepEqual(
     tinyError({
-      customKey: 'anything',
       prefix: '[prefix] ',
       message: 'My message',
-      name: 'CustomError'
+      customKey: 'anything',
+      name: 'CustomError',
+      type: /anything/,
     }),
     assign(Object.create(Error.prototype), {
-      customKey: 'anything',
       message: '[prefix] My message',
-      name: 'CustomError'
+      customKey: 'anything',
+      name: 'CustomError',
+      type: /anything/,
     }),
     'Copies over all other args.'
   );
