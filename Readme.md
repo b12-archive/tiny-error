@@ -33,11 +33,6 @@ I’m no expert with *go*, but I have heard two things:
 Since *go* programmers like it so, why not try lightweight errors in JavaScript?
 
 
-**⚠ Heads up!** This is totally a work in progress. [Thoughts and ideas][] are very welcome.
-
-[Thoughts and ideas]:  https://github.com/studio-b12/tiny-error/issues
-
-
 
 
 Installation
