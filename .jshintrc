@@ -5,6 +5,7 @@
    */
 
   "esnext": true,
+  "proto": true,
 
   /*
    * ENVIRONMENTS
