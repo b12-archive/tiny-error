@@ -25,12 +25,17 @@ const tinyError = (args) => {
     args = omit(args, 'suffix');
   }
 
+  let prototype;
+  if (args.hasOwnProperty('prototype')) {
+    prototype = args.prototype;
+    args = omit(args, 'prototype');
+  } else {
+    prototype = Error.prototype;
+  }
+
   return (hasMessage ?
     assign(
-      Object.create(args.hasOwnProperty('prototype') ?
-        args.prototype :
-        ((args.type && args.type.prototype) || Error.prototype)
-      ),
+      Object.create(prototype),
       args
     ) :
 
