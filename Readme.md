@@ -116,10 +116,8 @@ throw myError('Oh no. Not again!');
 //» Error: [my library] Oh no. Not again!
 ```
 
-***
-
 <a                                                      id="maker-function"></a>
-&ast;&emsp;*maker function* – a term I coined together for a function that creates an object. Not an instance of a specific class (that’s a *constructor*), not an instance of any class (*factory*). Just an object. If there is another word for that, great! Tell me in [an issue](https://github.com/studio-b12/tiny-error/issues/new) please.
+> &ast;&ensp;*maker function* – a term I coined together for a function that creates an object. Not an instance of a class (that’s a *factory*). Not an instance of a specific class (*constructor*). Just an object. If there is another word for that, great! Tell me in [an issue](https://github.com/studio-b12/tiny-error/issues/new) please.
 
 
 
