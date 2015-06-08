@@ -40,4 +40,4 @@ const tinyError = (args) => {
 
 error = tinyError({prefix: '[tinyError] '});
 
-export {tinyError as default};
+export default tinyError;
