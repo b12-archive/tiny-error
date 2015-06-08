@@ -22,7 +22,9 @@ tiny-error
 
 **Super-light error objects.** Inspired by *go*.
 
-I’m no expert with *go*, but I’ve heard two things:
+ 
+
+I’m no expert with *go*, but I have heard two things:
 
 * *Go* has no heavy try/catch mechanism. We all know that try/catch in JS is [slowish](https://jsperf.com/try-catch-performance-overhead) – and you can [do well](http://stackoverflow.com/a/3217308/2816199) without it.
 * *Go* has no heavy stack traces in errors. They also bring [overhead](http://jsperf.com/new-error-vs-custom-error-object) in JavaScript. And, if you ask me, I definitely prefer a readable error message than a stack trace with umpteen calls to dig through.
