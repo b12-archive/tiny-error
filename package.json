@@ -42,9 +42,12 @@
 , "license": "MIT"
 , "keywords":
   [ "error"
+  , "errors"
   , "exception"
   , "handling"
   , "performance"
+  , "light"
+  , "lightweight"
   ]
 , "contributors":
   [ "Tomek Wiszniewski <t.wiszniewski@gmail.com>"
