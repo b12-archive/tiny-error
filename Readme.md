@@ -172,20 +172,22 @@ We return an `{Error}` if `args` contains a `{String} args.message`. Otherwise w
 ```js
 tinyError({
   prefix: '[my library] ',
-  myCode: 0,
-  message: 'Something went wrong',
+  myCode: 2,
+  prototype: TypeError.prototype,
+  message: '`something` should be a number.',
 });
 
 
 const myError = tinyError({prefix: '[my library] '})
 myError({
-  myCode: 0,
-  message: 'Something went wrong',
+  myCode: 2,
+  prototype: TypeError.prototype,
+  message: '`something` should be a number.',
 });
 
 
-const knownError = myError({myCode: 0});
-knownError('Something went wrong');
+const argumentError = myError({myCode: 2, prototype: TypeError.prototype});
+argumentError('`something` should be a number.');
 ```
 
 
