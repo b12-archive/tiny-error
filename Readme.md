@@ -27,12 +27,16 @@ Inspired by *go*.
   title="Graphic by the great Justin Mezzell"
   href="http://justinmezzell.tumblr.com/post/66281274442"
   >
+  <br/>
+  <br/>
   <img
     alt="lightweight"
     src="Readme/Lightweight.gif"
     width="400"
     height="300"
   />
+  <br/>
+  <br/>
 </a></p>
 
 I’m no expert with *go*, but I have heard two things:
@@ -133,7 +137,7 @@ throw myError('Oh no. Not again!');
 
 
 API
-===
+---
 
 
 <h3><pre>
