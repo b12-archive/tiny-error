@@ -4,7 +4,7 @@
   "description": "Super-light error objects.",
   "dependencies": {
     "101": "^1.0.0",
-    "object-assign": "^3.0.0"
+    "object-assign": "^4.0.1"
   },
   "scripts": {
     "build": "cd module && babel --out-dir ../ *.js",
