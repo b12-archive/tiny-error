@@ -36,10 +36,13 @@ Inspired by *go*.
   <br/>
 </a></p>
 
-I’m no expert with *go*, but I have heard two things:
+I’m no expert with *go*, but I have heard three things:
 
-* *Go* has no heavy try/catch mechanism. We all know that try/catch in JS is [slowish](https://jsperf.com/try-catch-performance-overhead) – and you can [do well](http://stackoverflow.com/a/3217308/2816199) without it.
-* *Go* has no heavy stack traces in errors. They also bring [overhead](http://jsperf.com/new-error-vs-custom-error-object) in JavaScript. And, if you ask me, I definitely prefer a readable error message than a stack trace with umpteen calls to dig through.
+* *go* has no heavy try/catch mechanism. We all know that try/catch in JS is [slowish](https://jsperf.com/try-catch-performance-overhead) – and you can [do well](http://stackoverflow.com/a/3217308/2816199) without it.
+
+* *go* does have a thing called `panic`. You use it when you encounter an error which you absolutely can’t recover from. It just crashes the program and displays a readable message to the developer or user.
+
+* *go* has no [heavy](http://jsperf.com/new-error-vs-custom-error-object) stack traces. That’s mental overhead for the user. If you ask me, I don’t like stack traces with umpty-ump calls to dig through. (If you’ve ever used node streams or RxJS, you know what I mean.) prefer a descriptive overview of what went wrong, why it went wrong, what to do next and a read-up link.
 
 Since *go* programmers like it so, why not try lightweight errors in JavaScript?
 
