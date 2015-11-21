@@ -1,6 +1,6 @@
 {
   "name": "tiny-error",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Super-light error objects.",
   "dependencies": {
     "101": "^1.0.0",
