@@ -10,9 +10,7 @@ before_install:
 
 language:
   node_js
-node_js:
-  - stable
-  - iojs
+node_js: [stable]
 
 after_script:
   npm run coveralls
